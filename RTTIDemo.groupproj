@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BC4034EC-687F-46B9-A260-0EBE3C9CCDE8}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="common\RTTICommon.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DemoRtti\DemoRtti.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DemoORM\DemoORM.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DemoRest\DemoRest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RTTICommon">
+        <MSBuild Projects="common\RTTICommon.dproj"/>
+    </Target>
+    <Target Name="RTTICommon:Clean">
+        <MSBuild Projects="common\RTTICommon.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RTTICommon:Make">
+        <MSBuild Projects="common\RTTICommon.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoRtti">
+        <MSBuild Projects="DemoRtti\DemoRtti.dproj"/>
+    </Target>
+    <Target Name="DemoRtti:Clean">
+        <MSBuild Projects="DemoRtti\DemoRtti.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoRtti:Make">
+        <MSBuild Projects="DemoRtti\DemoRtti.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoORM">
+        <MSBuild Projects="DemoORM\DemoORM.dproj"/>
+    </Target>
+    <Target Name="DemoORM:Clean">
+        <MSBuild Projects="DemoORM\DemoORM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoORM:Make">
+        <MSBuild Projects="DemoORM\DemoORM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoRest">
+        <MSBuild Projects="DemoRest\DemoRest.dproj"/>
+    </Target>
+    <Target Name="DemoRest:Clean">
+        <MSBuild Projects="DemoRest\DemoRest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoRest:Make">
+        <MSBuild Projects="DemoRest\DemoRest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RTTICommon;DemoRtti;DemoORM;DemoRest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RTTICommon:Clean;DemoRtti:Clean;DemoORM:Clean;DemoRest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RTTICommon:Make;DemoRtti:Make;DemoORM:Make;DemoRest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
